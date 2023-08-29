@@ -24,7 +24,7 @@ public class game extends Canvas implements Runnable
         
         Handler = new handler(); //initate handler class
         this.addKeyListener(new keyImput(Handler));
-        Handler.addObj(new player(WIDTH/2-32, HEIGHT/2-32, ID.Player));
+        Handler.addObj(new player(WIDTH/2-32, HEIGHT/2-32, ID.Player)); // fist object of linked list will have player controls attached 
         Handler.addObj(new testObjcet(WIDTH/4-32,HEIGHT/4-32,ID.testObjcet) );
 
     }

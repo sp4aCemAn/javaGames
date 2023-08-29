@@ -2,7 +2,7 @@ package com.game.main;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
+import java.util.LinkedList;
 
 public class keyImput extends KeyAdapter {
     private handler Handler;
@@ -23,19 +23,16 @@ public class keyImput extends KeyAdapter {
         isKeyDowm = true;
         
         
-        for(gameObject obj : Handler.objects)
+        for(gameObject obj : Handler.objects) /// refactor code later and come up with better idea 
         {
-            gameObject tempObj = null; // fuck awfull bandiad fix 
-            // find another better way of doing this prob going to require a rewrite 
+            gameObject tempObj = Handler.objects.get(0); // less awfull fix 
+            gameObject testObj = Handler.objects.get(1); // debug to grow test object 
 
-            if(obj.id == ID.Player)
-            {
-                tempObj = obj;
-            }
 
-            
+            System.out.println(key);
         try { // dumb fix for now while i test hitbox
             // TODO Fix this ASAP
+            // TODO refactor code 
              switch (key)
             {
                 case 38: // down arrow
@@ -60,6 +57,15 @@ public class keyImput extends KeyAdapter {
 
                 case 68:
                 tempObj.setSizeX(tempObj.getSizeX() - 5);
+                break;
+
+                case 93:// [
+                testObj.sizeX = (testObj.sizeX + 5);
+                testObj.sizeY = (testObj.sizeY + 5);
+                break;
+                case 91:// ]
+                testObj.sizeX = (testObj.sizeX - 5);
+                testObj.sizeY = (testObj.sizeY - 5);
                 break;
                 default:
 

@@ -24,6 +24,7 @@ public class hitBox extends gameObject {
         if((this.x < object.x+1)&&(this.x+this.sizeX > object.x + object.sizeX))
         {
             System.out.println("intersenting on x");
+            return true;
         }
         
 

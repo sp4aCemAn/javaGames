@@ -19,6 +19,7 @@ public class player extends gameObject
         y += velY;
         x += velX;
         System.out.println(this.x +  " " + this.sizeX);
+        //System.out.println(this.isTouch());
 
         //y+=velY;
         // debug System.out.println(x);
