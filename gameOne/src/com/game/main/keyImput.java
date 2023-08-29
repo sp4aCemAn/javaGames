@@ -15,7 +15,8 @@ public class keyImput extends KeyAdapter {
 
 
     public void keyPressed(KeyEvent e)
-    {
+    {//test
+        
         
         int key = e.getKeyCode();
         //System.out.println(isKeyDowm);
