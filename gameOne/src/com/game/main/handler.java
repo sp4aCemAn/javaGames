@@ -3,7 +3,7 @@ package com.game.main;
 
 import java.util.LinkedList;
 import java.awt.Graphics;
-
+// for the love of god refactor code 
 public class handler {
     
     LinkedList<gameObject> objects = new LinkedList<gameObject>();
