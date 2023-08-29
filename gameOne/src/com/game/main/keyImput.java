@@ -30,7 +30,6 @@ public class keyImput extends KeyAdapter {
 
             if(obj.id == ID.Player)
             {
-
                 tempObj = obj;
             }
 
