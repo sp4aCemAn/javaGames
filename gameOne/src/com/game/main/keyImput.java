@@ -26,7 +26,10 @@ public class keyImput extends KeyAdapter {
         {
             gameObject tempObj = null; // fuck awfull bandiad fix 
             // find another better way of doing this prob going to require a rewrite 
-            if(obj.id == ID.Player){
+
+            if(obj.id == ID.Player)
+            {
+
                 tempObj = obj;
             }
 
