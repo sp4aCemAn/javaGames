@@ -2,11 +2,11 @@ package com.game.main;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.LinkedList;
+
 
 public class keyImput extends KeyAdapter {
     private handler Handler;
-    private boolean isKeyDowm; // unused 
+    //private boolean isKeyDowm; // unused 
 
     public keyImput(handler Handler)
     {
@@ -20,21 +20,22 @@ public class keyImput extends KeyAdapter {
         
         int key = e.getKeyCode();
         //System.out.println(isKeyDowm);
-        isKeyDowm = true;
+        //isKeyDowm = true;
         
         
-        for(gameObject obj : Handler.objects) /// refactor code later and come up with better idea 
+        for(gameObject obj : Handler.objects) /// refactor code later 
         {
             gameObject tempObj = Handler.objects.get(0); // less awfull fix 
             gameObject testObj = Handler.objects.get(1); // debug to grow test object 
 
 
             //System.out.println(key);
-        try { // dumb fix for now while i test hitbox
+        try 
+        { // dumb fix for now while i test hitbox
             // TODO Fix this ASAP
-            // TODO refactor code 
+          
              switch (key)
-            {
+             {
                 case 38: // down arrow
                 tempObj.setVelY(-5);
                 break;
@@ -72,7 +73,9 @@ public class keyImput extends KeyAdapter {
                 break;
 
             }
-        } catch (Exception error) {
+        } 
+        catch (Exception error) 
+        {//TODO make better
             System.out.println("FIX THIS CODE");
         }
        
@@ -83,8 +86,9 @@ public class keyImput extends KeyAdapter {
 
     }
 
-    public void keyReleased(KeyEvent e){
-        isKeyDowm = false;
+    public void keyReleased(KeyEvent e)
+    {
+        //isKeyDowm = false;
         int key = e.getKeyCode();
         for(gameObject obj : Handler.objects)
         {

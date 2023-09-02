@@ -14,13 +14,13 @@ public class testObjcet extends gameObject {
 
     @Override
     public void tick() {
-        // TODO Auto-generated method stub
+       
        
     }
 
     @Override
     public void render(Graphics g) {
-        // TODO Auto-generated method stub
+     
         g.setColor(Color.blue);
         g.fillRect(x, y, sizeX, sizeY);
     }
@@ -30,8 +30,8 @@ public class testObjcet extends gameObject {
     @Override
     public boolean isColiding(gameObject object) {
 
-        if((object != this) && (this.x < object.x + object.sizeX - 1 && this.x + this.sizeX > object.x + 1 ) 
-        && (this.y < object.y + object.sizeY - 1 && this.y + this.sizeY > object.y + 1 ))
+        if((object != this) && ((this.x < object.x + object.sizeX - 1) && (this.x + this.sizeX > object.x + 1)) && 
+                                (this.y < object.y + object.sizeY - 1) && (this.y + this.sizeY > object.y + 1))
        {
             this.setX((int)(Math.random()*701));
             this.setY((int)(Math.random()*351));

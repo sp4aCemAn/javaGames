@@ -1,6 +1,7 @@
 package com.game.main;
 
-public enum testObject {
+public enum testObject 
+{
 
   
     

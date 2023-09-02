@@ -35,10 +35,11 @@ public class player extends gameObject
    
    
     @Override
-    public boolean isColiding(gameObject object) {
+    public boolean isColiding(gameObject object) 
+    {
        
-        if((object != this) &&(this.x < object.x + object.sizeX - 1 && this.x + this.sizeX > object.x + 1 ) 
-         && (this.y < object.y + object.sizeY - 1 && this.y + this.sizeY > object.y + 1 ))
+        if((object != this) && ((this.x < object.x + object.sizeX - 1) && (this.x + this.sizeX > object.x + 1)) && 
+                                (this.y < object.y + object.sizeY - 1) && (this.y + this.sizeY > object.y + 1))
         {
             return true;
         }
