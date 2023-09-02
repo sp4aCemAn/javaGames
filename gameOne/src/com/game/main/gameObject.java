@@ -1,6 +1,6 @@
 package com.game.main;
 import java.awt.Graphics;
-public abstract class gameObject
+public abstract class gameObject implements hitbox
 {
     
     protected int  x, y;
@@ -21,6 +21,7 @@ public abstract class gameObject
 
     public abstract void render(Graphics g);
 
+    
 
     public void setX(int x)
     {

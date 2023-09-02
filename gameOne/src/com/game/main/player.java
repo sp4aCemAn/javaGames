@@ -3,7 +3,7 @@ package com.game.main;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class player extends gameObject 
+public class player extends gameObject
 {
 
     public player(int x, int y, ID id)  // player constructor 
@@ -18,7 +18,7 @@ public class player extends gameObject
     {
         y += velY;
         x += velX;
-        System.out.println(this.x +  " " + this.sizeX);
+        
         //System.out.println(this.isTouch());
 
         //y+=velY;
@@ -32,6 +32,19 @@ public class player extends gameObject
         g.fillRect(x, y, sizeX, sizeY);
         
     }
-
+   
+   
+    @Override
+    public boolean isColiding(gameObject object) {
+       
+        if((object != this) &&(this.x < object.x + object.sizeX - 1 && this.x + this.sizeX > object.x + 1 ) 
+         && (this.y < object.y + object.sizeY - 1 && this.y + this.sizeY > object.y + 1 ))
+        {
+            return true;
+        }
+        return false;
+   
+    }
+    
     
 }

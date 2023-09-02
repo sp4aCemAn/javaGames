@@ -35,11 +35,17 @@ public class handler {
 
 
             // took me longer than it should of 
-            if(gameObj != playerObject && (playerObject.x < gameObj.x + gameObj.sizeX - 1 && playerObject.x + playerObject.sizeX > gameObj.x + 1 ) 
-                                       && (playerObject.y < gameObj.y + gameObj.sizeY - 1 && playerObject.y + playerObject.sizeY > gameObj.y + 1 ))
-            {
-                System.out.println("coliding with: " + gameObj.getID() + " type object");
+            
+            if(playerObject.isColiding(gameObj)){
+                System.out.println("this "+ playerObject +" is colliding with " + gameObj.getID() + " type object");
+                gameObj.setX((int)(Math.random()*701));
+                gameObj.setY((int)(Math.random()*351));
             }
+            
+
+
+                
+            
 
 
             

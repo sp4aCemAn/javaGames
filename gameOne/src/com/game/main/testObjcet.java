@@ -24,5 +24,19 @@ public class testObjcet extends gameObject {
         g.setColor(Color.blue);
         g.fillRect(x, y, sizeX, sizeY);
     }
+
+   
+
+    @Override
+    public boolean isColiding(gameObject object) {
+
+        if((object != this) && (this.x < object.x + object.sizeX - 1 && this.x + this.sizeX > object.x + 1 ) 
+        && (this.y < object.y + object.sizeY - 1 && this.y + this.sizeY > object.y + 1 ))
+       {
+           return true;
+       }
+       return false;
+  
+    }
     
 }

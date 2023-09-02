@@ -29,7 +29,7 @@ public class keyImput extends KeyAdapter {
             gameObject testObj = Handler.objects.get(1); // debug to grow test object 
 
 
-            System.out.println(key);
+            //System.out.println(key);
         try { // dumb fix for now while i test hitbox
             // TODO Fix this ASAP
             // TODO refactor code 
