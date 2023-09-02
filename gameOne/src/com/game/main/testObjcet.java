@@ -33,6 +33,8 @@ public class testObjcet extends gameObject {
         if((object != this) && (this.x < object.x + object.sizeX - 1 && this.x + this.sizeX > object.x + 1 ) 
         && (this.y < object.y + object.sizeY - 1 && this.y + this.sizeY > object.y + 1 ))
        {
+            this.setX((int)(Math.random()*701));
+            this.setY((int)(Math.random()*351));
            return true;
        }
        return false;

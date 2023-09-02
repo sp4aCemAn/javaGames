@@ -35,11 +35,10 @@ public class handler {
 
 
             // took me longer than it should of 
-            
+            gameObj.isColiding(playerObject);
             if(playerObject.isColiding(gameObj)){
                 System.out.println("this "+ playerObject +" is colliding with " + gameObj.getID() + " type object");
-                gameObj.setX((int)(Math.random()*701));
-                gameObj.setY((int)(Math.random()*351));
+                
             }
             
 
