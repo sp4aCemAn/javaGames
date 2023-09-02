@@ -1,15 +1,15 @@
 package com.game.main;
-
+import java.util.Arrays;
 import java.awt.Graphics;
 
-public class hitBox extends gameObject {
+public class hitBox extends handler {
 
     public hitBox(int x, int y, ID id) {
-        super(x, y, id);
+       
         
-
-
-
+        
+        
+      
     }
 
 
@@ -21,12 +21,7 @@ public class hitBox extends gameObject {
             // figure out best way to check this every tick 
              or if its best to check every tick or via a action state  */
 
-        if((this.x < object.x+1)&&(this.x+this.sizeX > object.x + object.sizeX))
-        {
-            System.out.println("intersenting on x");
-            return true;
-        }
-        
+    
 
         return false;
 

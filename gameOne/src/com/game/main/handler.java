@@ -6,14 +6,17 @@ import java.awt.Graphics;
 // for the love of god refactor code 
 public class handler {
     
+    
+
     LinkedList<gameObject> objects = new LinkedList<gameObject>();
 
-
+    private gameObject playerObject;
 
     
    
     public void tick()
-    {
+    {   
+        playerObject = objects.get(0);
         // loop through all game objects
         for (gameObject gameObj : objects)
         {
@@ -27,8 +30,23 @@ public class handler {
          * as we are calculating this every tick but idk im not a game dev
          * 
          */
-            gameObject tempObject = gameObj;
-            tempObject.tick();
+            
+
+
+
+            // took me longer than it should of 
+            if(gameObj != playerObject && (playerObject.x < gameObj.x + gameObj.sizeX - 1 && playerObject.x + playerObject.sizeX > gameObj.x + 1 ) 
+                                       && (playerObject.y < gameObj.y + gameObj.sizeY - 1 && playerObject.y + playerObject.sizeY > gameObj.y + 1 ))
+            {
+                System.out.println("coliding with: " + gameObj.getID() + " type object");
+            }
+
+
+            
+         gameObj.tick();
+ 
+
+            
     
         }
     
@@ -49,6 +67,7 @@ public class handler {
     public void addObj(gameObject object)
     {
         this.objects.add(object);
+        
     }
 
     public void removeObj(gameObject object)
