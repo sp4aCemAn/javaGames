@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 public class keyImput extends KeyAdapter {
     private handler Handler;
     
-    //private boolean isKeyDowm; // unused 
+    private boolean isKeyDowm; 
     private gridMovement movementBehavoir;
     public keyImput(handler Handler,gameBoard board)
     {
@@ -26,7 +26,7 @@ public class keyImput extends KeyAdapter {
         
         int key = e.getKeyCode();
         //System.out.println(isKeyDowm);
-        //isKeyDowm = true;
+        isKeyDowm = false;
         
         
         for(gameObject obj : Handler.objects) /// refactor code later 
@@ -85,7 +85,12 @@ public class keyImput extends KeyAdapter {
 
             }
             System.out.println(direction[0]+ " " + direction[1]);
-            movementBehavoir.movePlayer(tempObj, direction);
+            if(!isKeyDowm)
+            {
+                movementBehavoir.movePlayer(tempObj, direction);
+            }
+            
+            isKeyDowm = true;
         } 
         catch (Exception error) 
         {//TODO make better
@@ -101,7 +106,7 @@ public class keyImput extends KeyAdapter {
 
     public void keyReleased(KeyEvent e)
     {
-        //isKeyDowm = false;
+        isKeyDowm = false;
         int key = e.getKeyCode();
         for(gameObject obj : Handler.objects)
         {
