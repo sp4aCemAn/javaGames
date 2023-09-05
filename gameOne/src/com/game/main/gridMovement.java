@@ -31,12 +31,10 @@ public class gridMovement
         if(gridVelX < 0)
         {
             gridVelX = 0;
-            
         }
         if(gridVelY < 0)
         {
             gridVelY = 0;
-            
         }        
         if(gridVelX>targetGrid.length)
         {
