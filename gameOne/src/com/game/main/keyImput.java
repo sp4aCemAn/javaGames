@@ -33,13 +33,13 @@ public class keyImput extends KeyAdapter {
         {
             gameObject tempObj = Handler.objects.get(0); // less awfull fix 
             gameObject testObj = Handler.objects.get(1); // debug to grow test object 
-            int direction[] = {0,0};
+        
 
             //System.out.println(key);
         try 
         { // dumb fix for now while i test hitbox
             // TODO Fix this ASAP
-          
+            int direction[] = {0,0};
              switch (key)
              {
                 case 38: // down arrow
