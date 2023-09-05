@@ -15,6 +15,9 @@ public class game extends Canvas implements Runnable
 
     private handler Handler;
     
+    private gameBoard Grid;
+
+    public double delta;
     
     // game 
     public game() // game constructor 
@@ -26,7 +29,8 @@ public class game extends Canvas implements Runnable
         this.addKeyListener(new keyImput(Handler));
         Handler.addObj(new player(WIDTH/2-32, HEIGHT/2-32, ID.Player)); // fist object of linked list will have player controls attached 
         Handler.addObj(new testObjcet(WIDTH/4-32,HEIGHT/4-32,ID.testObjcet) );
-
+        Grid =  new gameBoard(WIDTH, HEIGHT, 31);
+        
     }
 
 
@@ -61,7 +65,7 @@ public class game extends Canvas implements Runnable
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
-        double delta = 0;
+        delta = 0;
         long timer = System.currentTimeMillis();
         int frames = 0; // for viewing fps
 
@@ -112,13 +116,14 @@ public class game extends Canvas implements Runnable
 
         Graphics g = bs.getDrawGraphics();
 
-
+        //TODO figure out wierd render bug that causes NULL exeption every other time this is ran
         g.setColor(Color.red);
         g.fillRect(0, 0, WIDTH, HEIGHT);
-
+        Grid.render(g);
         Handler.render(g);
-         // tender game object
-
+        
+         // render game object
+        
         g.dispose();
         
         bs.show();

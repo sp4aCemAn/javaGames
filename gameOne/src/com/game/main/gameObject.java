@@ -1,5 +1,6 @@
 package com.game.main;
 import java.awt.Graphics;
+import java.awt.Color;
 public abstract class gameObject implements hitbox
 {
     
@@ -8,6 +9,7 @@ public abstract class gameObject implements hitbox
     protected int velX, velY;
     public int sizeX;
     public int sizeY;
+ 
     public gameObject(int x, int y, ID id)
     {
         
@@ -19,7 +21,10 @@ public abstract class gameObject implements hitbox
 
     public abstract void tick();
 
-    public abstract void render(Graphics g);
+    public void render(Graphics g) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'render'");
+    }
 
     
 
