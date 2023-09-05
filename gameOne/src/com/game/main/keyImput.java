@@ -6,12 +6,18 @@ import java.awt.event.KeyEvent;
 
 public class keyImput extends KeyAdapter {
     private handler Handler;
+    
     //private boolean isKeyDowm; // unused 
-
-    public keyImput(handler Handler)
+    private gridMovement movementBehavoir;
+    public keyImput(handler Handler,gameBoard board)
     {
+
+        movementBehavoir = new gridMovement(board);
         this.Handler = Handler;
+        
+    
     }
+
 
 
     public void keyPressed(KeyEvent e)
@@ -27,7 +33,7 @@ public class keyImput extends KeyAdapter {
         {
             gameObject tempObj = Handler.objects.get(0); // less awfull fix 
             gameObject testObj = Handler.objects.get(1); // debug to grow test object 
-
+            int direction[] = {0,0};
 
             //System.out.println(key);
         try 
@@ -37,27 +43,32 @@ public class keyImput extends KeyAdapter {
              switch (key)
              {
                 case 38: // down arrow
-                tempObj.setVelY(-5);
+                //tempObj.setVelY(-5);
+                direction[1] -= 1;
+                
                 break;
                 
                 case 39: // right arrow
-                tempObj.setVelX(+5);
+                direction[0] += 1;
+                //tempObj.setVelX(+5);
                 break;
                 
                 case 40: // up arrow 
-                tempObj.setVelY(+5);
+                direction[1] += 1;
+                //tempObj.setVelY(+5);
                 break;
         
                 case 37: // left arrow
-                tempObj.setVelX(-5);
+                direction[0] -= 1;
+                //tempObj.setVelX(-5);
                 break;
 
                 case 65:
-                tempObj.setSizeX(tempObj.getSizeX() + 5);
+                //tempObj.setSizeX(tempObj.getSizeX() + 5);
                 break;
 
                 case 68:
-                tempObj.setSizeX(tempObj.getSizeX() - 5);
+                //tempObj.setSizeX(tempObj.getSizeX() - 5);
                 break;
 
                 case 93:// [
@@ -73,10 +84,12 @@ public class keyImput extends KeyAdapter {
                 break;
 
             }
+            System.out.println(direction[0]+ " " + direction[1]);
+            movementBehavoir.movePlayer(tempObj, direction);
         } 
         catch (Exception error) 
         {//TODO make better
-            System.out.println("FIX THIS CODE");
+            System.out.println("FIX THIS CODE " + error);
         }
        
             

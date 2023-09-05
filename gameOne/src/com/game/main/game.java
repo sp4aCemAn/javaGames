@@ -7,7 +7,7 @@ import java.awt.image.BufferStrategy;
 public class game extends Canvas implements Runnable
 {
     private static final long serialVersionUID = 6953287513222897904L;
-    public static final int WIDTH = 700, HEIGHT = (WIDTH / 12 * 9);
+    public static final int WIDTH = 700, HEIGHT = 600;
         
     private Thread thread;
 
@@ -24,12 +24,12 @@ public class game extends Canvas implements Runnable
     {   
         
         new window(WIDTH, HEIGHT, "test", this);
-        
+        Grid =  new gameBoard(WIDTH-32, HEIGHT - 100, 31);
         Handler = new handler(); //initate handler class
-        this.addKeyListener(new keyImput(Handler));
+        this.addKeyListener(new keyImput(Handler,Grid));
         Handler.addObj(new player(WIDTH/2-32, HEIGHT/2-32, ID.Player)); // fist object of linked list will have player controls attached 
         Handler.addObj(new testObjcet(WIDTH/4-32,HEIGHT/4-32,ID.testObjcet) );
-        Grid =  new gameBoard(WIDTH, HEIGHT, 31);
+        
         
     }
 
