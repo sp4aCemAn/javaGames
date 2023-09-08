@@ -7,14 +7,14 @@ public class gridMovement
     private int direction[] = new int[2]; // is going to work like vel x vel y but diffrent
     public Tile  targetGrid[][];  
     public int targetPos[] = new int[2];
-    public int gridVelX, gridVelY;
+    public int gridPosX, gridPosY;
             
     // constructor 
     public gridMovement(gameBoard board) 
     {
     targetGrid = board.objectGrid;
-    gridVelX = 0;
-    gridVelY = 0;
+    gridPosX = 0;
+    gridPosY = 0;
 
     }
 
@@ -25,31 +25,31 @@ public class gridMovement
     {
         player.sizeX = targetGrid[0][0].sizeX; // update player size will be removed later 
         player.sizeY = targetGrid[0][0].sizeY;
-        gridVelX += direction[0];  // conver array into sep values for readability
-        gridVelY += direction[1]; // if only vectors existed in the way i want them to work
+        gridPosX += direction[0];  // store "vector" in X and Y values to ref for velX velY
+        gridPosY += direction[1]; // if only vectors existed in the way i want them to work would make code more readable 
 
-        if(gridVelX < 0)
+        if(gridPosX < 0)
         {
-            gridVelX = 0;
+            gridPosX = 0;
         }
-        if(gridVelY < 0)
+        if(gridPosY < 0)
         {
-            gridVelY = 0;
+            gridPosY = 0;
         }        
-        if(gridVelX>targetGrid.length)
+        if(gridPosX>targetGrid.length-1)
         {
-            gridVelX = targetGrid.length-1;
+            gridPosX = targetGrid.length-1;
         }
-        if(gridVelY>targetGrid[0].length)
+        if(gridPosY>targetGrid[0].length-1)
         {
-            gridVelY = targetGrid[0].length-1;
+            gridPosY = targetGrid[0].length-1;
         }
 
-        targetPos[0] = targetGrid[gridVelY][gridVelX].x;
-        targetPos[1] = targetGrid[gridVelY][gridVelX].y;
+        targetPos[0] = targetGrid[gridPosY][gridPosX].x;
+        targetPos[1] = targetGrid[gridPosY][gridPosX].y;
         player.x = targetPos[0];
         player.y = targetPos[1];
-
+        System.out.println(gridPosX +  " " + gridPosY);
     } 
     
 }
