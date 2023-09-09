@@ -8,9 +8,11 @@ public class handler
 {
     
     
-
+    
+    
+    int[] direction;
     LinkedList<gameObject> objects = new LinkedList<gameObject>();
-
+   
     private gameObject playerObject;
 
     
@@ -22,7 +24,9 @@ public class handler
         for (gameObject gameObj : objects)
         {
         //tick all objects in list
-      
+       
+
+            
             // took me longer than it should of 
             gameObj.isColiding(playerObject);
             if(playerObject.isColiding(gameObj))

@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 public class keyImput extends KeyAdapter {
     private handler Handler;
-    
+    private int direction[] = {0,0};
     private boolean isKeyDowm; 
     private gridMovement movementBehavoir;
     public keyImput(handler Handler,gameBoard board)
@@ -17,9 +17,12 @@ public class keyImput extends KeyAdapter {
         
     
     }
-
-
-
+    
+    public void tick()
+    {
+        gameObject tempObj = Handler.objects.get(0);
+        movementBehavoir.movePlayer(tempObj, direction);
+    }
     public void keyPressed(KeyEvent e)
     {//test
         
@@ -31,35 +34,40 @@ public class keyImput extends KeyAdapter {
         
         for(gameObject obj : Handler.objects) /// refactor code later 
         {
-            gameObject tempObj = Handler.objects.get(0); // less awfull fix 
+            // less awfull fix 
             gameObject testObj = Handler.objects.get(1); // debug to grow test object 
         
 
+        
+    
             //System.out.println(key);
         try 
         { // dumb fix for now while i test hitbox
             // TODO Fix this ASAP
-            int direction[] = {0,0};
+            
              switch (key)
              {
                 case 38: // down arrow
                 //tempObj.setVelY(-5);
-                direction[1] -= 1;
-                
+                direction[1] = -1;
+                direction[0] = 0;
                 break;
                 
                 case 39: // right arrow
-                direction[0] += 1;
+                direction[0] = 1;
+                direction[1] = 0;
                 //tempObj.setVelX(+5);
                 break;
                 
                 case 40: // up arrow 
-                direction[1] += 1;
+                direction[1] = 1;
+                direction[0] = 0;
                 //tempObj.setVelY(+5);
                 break;
         
                 case 37: // left arrow
-                direction[0] -= 1;
+                direction[0] = -1;
+                direction[1] = 0;
                 //tempObj.setVelX(-5);
                 break;
 
@@ -85,9 +93,10 @@ public class keyImput extends KeyAdapter {
 
             }
             System.out.println(direction[0]+ " " + direction[1]);
+            
             if(!isKeyDowm)
             {
-                movementBehavoir.movePlayer(tempObj, direction);
+                
             }
             
             isKeyDowm = true;

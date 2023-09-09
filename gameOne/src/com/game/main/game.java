@@ -14,6 +14,8 @@ public class game extends Canvas implements Runnable
     private boolean running = false;
 
     private handler Handler;
+
+    private keyImput keyInput;
     
     private gameBoard Grid;
 
@@ -26,7 +28,8 @@ public class game extends Canvas implements Runnable
         new window(WIDTH, HEIGHT, "test", this);
         Grid =  new gameBoard(WIDTH-32, HEIGHT - 100, 31);
         Handler = new handler(); //initate handler class
-        this.addKeyListener(new keyImput(Handler,Grid));
+        keyInput = new keyImput(Handler,Grid);
+        this.addKeyListener(keyInput);
         Handler.addObj(new player(WIDTH/2-32, HEIGHT/2-32, ID.Player)); // fist object of linked list will have player controls attached 
         Handler.addObj(new testObjcet(WIDTH/4-32,HEIGHT/4-32,ID.testObjcet) );
         
@@ -78,6 +81,7 @@ public class game extends Canvas implements Runnable
             {
                 tick();
                 delta --;
+                System.out.println(delta);
             }
 
             if(running)
@@ -98,11 +102,11 @@ public class game extends Canvas implements Runnable
         }
         stop();
     }
-
+   
     private void tick()
     {
         Handler.tick(); // tick game object
-       
+        keyInput.tick();
     }
 
     private void render()
