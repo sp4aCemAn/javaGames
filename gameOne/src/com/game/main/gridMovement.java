@@ -29,25 +29,29 @@ public class gridMovement
         {
             if(player.x < newPosX)
             {
-                player.x +=1;
+                player.velX =1;
             }
             if(player.x > newPosX)
             {
-                player.x -=1;
+                player.velX = -1;
             }
             if(player.y < newPosY)
             {
-                player.y +=1;
+                player.velY =1;
             }
             if(player.y > newPosY)
             {
-                player.y -=1;
+                player.velY = -1;
             }
             
         }
-        /*player.x = targetPos[0];
-        player.y = targetPos[1];*/
+        player.velX = 0;
+        player.velY = 0;
         
+        
+        
+
+
     }
     
 
