@@ -6,7 +6,8 @@ import java.awt.event.KeyEvent;
 
 public class keyImput extends KeyAdapter {
     private handler Handler;
-    private int direction[] = {0,0};
+    //private int direction[] = {0,0};
+    private vec2 direction = new vec2(0,0);
     private boolean isKeyDowm; 
     private gridMovement movementBehavoir;
     public keyImput(handler Handler,gameBoard board)
@@ -49,25 +50,25 @@ public class keyImput extends KeyAdapter {
              {
                 case 38: // down arrow
                 //tempObj.setVelY(-5);
-                direction[1] = -1;
-                direction[0] = 0;
+                direction.y = -1;
+                direction.x = 0;
                 break;
                 
                 case 39: // right arrow
-                direction[0] = 1;
-                direction[1] = 0;
+                direction.x = 1;
+                direction.y = 0;
                 //tempObj.setVelX(+5);
                 break;
                 
                 case 40: // up arrow 
-                direction[1] = 1;
-                direction[0] = 0;
+                direction.y = 1;
+                direction.x = 0;
                 //tempObj.setVelY(+5);
                 break;
         
                 case 37: // left arrow
-                direction[0] = -1;
-                direction[1] = 0;
+                direction.x = -1;
+                direction.y = 0;
                 //tempObj.setVelX(-5);
                 break;
 
@@ -92,7 +93,7 @@ public class keyImput extends KeyAdapter {
                 break;
 
             }
-            System.out.println(direction[0]+ " " + direction[1]);
+            System.out.println(direction.x+ " " + direction.y);
             
             if(!isKeyDowm)
             {
