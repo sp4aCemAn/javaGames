@@ -19,7 +19,7 @@ public class gridMovement
     gridPosY = 0;
 
     }
-
+    // TODO fix race condition problem that causes target posiotion to be updated before player reaches said position 
     public void animate(gameObject player,int newPosX,int newPosY)
     {
                  
