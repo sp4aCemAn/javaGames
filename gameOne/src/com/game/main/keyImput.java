@@ -50,19 +50,22 @@ public class keyImput extends KeyAdapter {
              {
                 case 38: // down arrow
                 //tempObj.setVelY(-5);
-                direction.y = -1;
+                
                 direction.x = 0;
+                direction.y = -1;
                 break;
                 
                 case 39: // right arrow
                 direction.x = 1;
                 direction.y = 0;
+
                 //tempObj.setVelX(+5);
                 break;
                 
                 case 40: // up arrow 
-                direction.y = 1;
+                
                 direction.x = 0;
+                direction.y = 1;
                 //tempObj.setVelY(+5);
                 break;
         
@@ -94,11 +97,7 @@ public class keyImput extends KeyAdapter {
 
             }
             System.out.println(direction.x+ " " + direction.y);
-            
-            if(!isKeyDowm)
-            {
-                
-            }
+        
             
             isKeyDowm = true;
         } 

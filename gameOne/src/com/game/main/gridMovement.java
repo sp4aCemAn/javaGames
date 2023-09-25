@@ -24,34 +24,34 @@ public class gridMovement
     {
                 
 
-        gridPosX += direction.x;  // store "vector" in X and Y values to ref for velX velY
-        gridPosY += direction.y;
-        while(player.getY() != targetPos[0] || player.getY() != targetPos[1])
-        {
-
+        /*gridPosX += direction.x;  // store "vector" in X and Y values to ref for velX velY
+        gridPosY += direction.y;*/
         
-            if(player.x < newPosX)
+       
+            if(player.x < targetPos[0])
             {
-                player.setX(player.getX()+1);
+                player.setX(player.getX()+2);
                 
             }
-            if(player.x > newPosX)
+            if(player.x > targetPos[0])
             {
-                player.setX(player.getX()-1);
+                player.setX(player.getX()-2);
                 
             }
-            if(player.y < newPosY)
+            if(player.y < targetPos[1])
             {
-                player.setY(player.getY()+1);
+                player.setY(player.getY()+2);
                 
             }
-            if(player.y > newPosY)
+            if(player.y > targetPos[1])
             {
-                player.setY(player.getY()-1);
+                player.setY(player.getY()-2);
                 
-            }else{
-               
             }
+            else{
+        
+            
+
         }
         
       
@@ -78,8 +78,17 @@ public class gridMovement
         if(!inproc){
 
         }
-         // if only vectors existed in the way i want them to work would make code more readable 
-        direction = direction;
+         
+        
+        // RETARDED !!!!!
+        if(!(player.getX() != targetPos[0]))
+        gridPosX += direction.x;
+        
+        
+        if(!(player.getY() != targetPos[1]))
+        gridPosY += direction.y;
+
+
 
 
         if(gridPosX < 0)
@@ -98,6 +107,9 @@ public class gridMovement
         {
             gridPosY = targetGrid[0].length-1;
         }
+
+
+        System.out.println(gridPosX + " " + gridPosY);
         targetPos[0] = targetGrid[gridPosY][gridPosX].x;
         targetPos[1] = targetGrid[gridPosY][gridPosX].y;
 
