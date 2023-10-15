@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 public class player extends gameObject
 {
-
+    public boolean Ishead;
     public player(int x, int y, ID id)  // player constructor 
     {
         super(x, y, id);

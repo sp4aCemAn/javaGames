@@ -5,6 +5,6 @@ public enum ID
     Player(),
     Enemy(),
     testObjcet(),
-    Tile();
-
+    Tile(),
+    Snake();
 }

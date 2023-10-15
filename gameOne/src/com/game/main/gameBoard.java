@@ -1,11 +1,14 @@
 package com.game.main;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 // TODO REFATOR!!!!! 
 public class gameBoard
 {   
+   
     
+    private ArrayList<gameObject> objectList = new ArrayList<gameObject>();
     protected int HIGHT,WIDTH;
     private int UNIT_SIZE; 
     private int UNIT_PER_ROW; // tiles per row
@@ -44,7 +47,7 @@ public class gameBoard
     
 
     // populate array
-        int Ypoint = 0; // keeps track of y pos of grid
+        int Ypoint = 0; // keeps track of y pos of grid in loop
         
         for (int i = 0; i < objectGrid.length; i++) 
         {
@@ -61,7 +64,12 @@ public class gameBoard
     }
 
 
-    
+    public void update (gameObject object)
+    {
+        // store information on what the current state of the board is 
+
+
+    }
 
     
     

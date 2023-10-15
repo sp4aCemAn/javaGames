@@ -49,8 +49,7 @@ public class keyImput extends KeyAdapter {
              switch (key)
              {
                 case 38: // down arrow
-                //tempObj.setVelY(-5);
-                
+                //tempObj.setVelY(-5); 
                 direction.x = 0;
                 direction.y = -1;
                 break;
