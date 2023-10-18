@@ -11,7 +11,7 @@ public class gridMovement
     public int targetPos[] = new int[2];
     public int gridPosX, gridPosY;
             
-    // constructor 
+// constructor 
     public gridMovement(gameBoard board) 
     {
     targetGrid = board.objectGrid;
@@ -28,22 +28,22 @@ public class gridMovement
         gridPosY += direction.y;*/
         
        
-            if(player.x < targetPos[0])
+            if(player.getX() < targetPos[0])
             {
                 player.setX(player.getX()+2);
                 
             }
-            if(player.x > targetPos[0])
+            if(player.getX() > targetPos[0])
             {
                 player.setX(player.getX()-2);
                 
             }
-            if(player.y < targetPos[1])
+            if(player.getY() < targetPos[1])
             {
                 player.setY(player.getY()+2);
                 
             }
-            if(player.y > targetPos[1])
+            if(player.getY() > targetPos[1])
             {
                 player.setY(player.getY()-2);
                 
@@ -71,8 +71,8 @@ public class gridMovement
     {
        boolean inproc = false; 
 
-        player.sizeX = targetGrid[0][0].sizeX; // update player size will be removed later 
-        player.sizeY = targetGrid[0][0].sizeY;
+        player.setSizeX(targetGrid[0][0].sizeX); // update player size will be removed later 
+        player.setSizeY(targetGrid[0][0].sizeY);
 
         
         if(!inproc){

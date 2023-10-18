@@ -30,8 +30,8 @@ public class testObjcet extends gameObject {
     @Override
     public boolean isColiding(gameObject object) {
 
-        if((object != this) && ((this.x < object.x + object.sizeX - 1) && (this.x + this.sizeX > object.x + 1)) && 
-                                (this.y < object.y + object.sizeY - 1) && (this.y + this.sizeY > object.y + 1))
+        if((object != this) && ((this.x < object.getX() + object.getSizeX() - 1) && (this.x + this.getSizeX() > object.getX() + 1)) && 
+                                (this.y < object.getY() + object.getSizeY() - 1) && (this.y + this.getSizeY() > object.getY() + 1))
        {
             this.setX((int)(Math.random()*701));
             this.setY((int)(Math.random()*351));

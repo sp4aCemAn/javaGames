@@ -30,8 +30,10 @@ public class game extends Canvas implements Runnable
         Handler = new handler(); //initate handler class
         keyInput = new keyImput(Handler,Grid);
         this.addKeyListener(keyInput);
-        Handler.addObj(new player(WIDTH/2-32, HEIGHT/2-32, ID.Player)); // fist object of linked list will have player controls attached 
-        Handler.addObj(new testObjcet(WIDTH/4-32,HEIGHT/4-32,ID.testObjcet) );
+        Handler.addObj(new snakePlayer(WIDTH/5-32,HEIGHT/5-32,ID.testObjcet));
+        Handler.addObj(new testObjcet(WIDTH/4-32,HEIGHT/4-32,ID.testObjcet));
+        //Handler.addObj(new player(WIDTH/2-32, HEIGHT/2-32, ID.Player)); // fist object of linked list will have player controls attached 
+        
         
         
     }
