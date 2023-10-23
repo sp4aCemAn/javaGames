@@ -6,6 +6,8 @@ import java.awt.Graphics;
 public class player extends gameObject
 {
     public boolean Ishead;
+    public vec2 gridLocation = new vec2(0,0);
+
     public player(int x, int y, ID id)  // player constructor 
     {
         super(x, y, id);
@@ -47,5 +49,48 @@ public class player extends gameObject
    
     }
     
+
+    public void animate(vec2 newPos)
+    {// snake player class will pass through a new x and y position (seprate from grid position)
+     // which refers to the litral location on screen where the tile refrenced from grid location is 
+     //this updates vel value so that this animate function need vel to update 
+     // fix werid bug that causes var to skip value 
+     
+     if(this.getX() < newPos.x)
+     {
+         this.setVelX(1);;
+         
+     }
+     if(this.getX() > newPos.x)
+     {
+         this.setVelY(-1);;
+         
+     }
+     if(this.getY() < newPos.y)
+     {
+         this.setVelX(1);;
+         
+     }
+     if(this.getY() > newPos.y)
+     {
+         this.setVelY(-1);;
+         
+     }
+     else{
+        this.setVelX(0);
+        this.setVelX(0);
+
+ }
+    }
+
+
+    public vec2 getGridLocation(){
+        return gridLocation;
+    }
+
+    public void setGridLocation(vec2 targetGridLcoation){
+        gridLocation = targetGridLcoation;
+    }
+
     
 }

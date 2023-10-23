@@ -15,12 +15,16 @@ public class handler
    
     private gameObject playerObject;
 
-    
+
    
     public void tick()
     {   
         playerObject = objects.get(0);
         // loop through all game objects
+
+        //test
+        
+
         for (gameObject gameObj : objects)
         {
         //tick all objects in list

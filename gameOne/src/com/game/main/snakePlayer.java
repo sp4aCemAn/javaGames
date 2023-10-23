@@ -27,6 +27,11 @@ public class snakePlayer extends gameObject {
     {
         //playerObjecList.get(0).setVelX(velX);
         //playerObjecList.get(0).setVelY(velY);
+        //loop through all objects and update location based on prev head location 
+        // maybe create a animate function inside of every player node?
+    
+        
+
 
     }
 
