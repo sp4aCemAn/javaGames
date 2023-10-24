@@ -30,7 +30,7 @@ public class player extends gameObject
     //@Override
     public void render(Graphics g) 
     {   // this function declars what the player obj looks like 
-        g.setColor(Color.pink);
+        g.setColor(new Color(255, 105, 0));
         g.fillRect(x, y, sizeX, sizeY);
         
     }
