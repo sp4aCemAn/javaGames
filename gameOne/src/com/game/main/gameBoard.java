@@ -40,8 +40,8 @@ public class gameBoard
         HIGHT = Hight;
         WIDTH = Width;
         UNIT_PER_ROW = Tpr;
-        COLOR_ONE = Color.WHITE;
-        COLOR_TWO = Color.BLACK;
+        COLOR_ONE = Color.BLACK;
+        COLOR_TWO = new Color(211, 143, 0);
         UNIT_SIZE = (Hight) / UNIT_PER_ROW;
         objectGrid  = new Tile[UNIT_PER_ROW][UNIT_PER_ROW]; 
     

@@ -29,7 +29,7 @@ public class snakePlayer extends gameObject {
         //playerObjecList.get(0).setVelY(velY);
         //loop through all objects and update location based on prev head location 
         // maybe create a animate function inside of every player node?
-    
+        playerObjecList.get(0).tick();
         
 
 
@@ -49,6 +49,10 @@ public class snakePlayer extends gameObject {
         }
     }
 
+    public void animate(vec2 targetPos)
+    {
+        playerObjecList.get(0).animate(targetPos);
+    }
     
     public void setX(int x)
     {

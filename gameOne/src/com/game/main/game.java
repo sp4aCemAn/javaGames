@@ -34,7 +34,7 @@ public class game extends Canvas implements Runnable
         this.addKeyListener(keyInput);
         Handler.addObj(new snakePlayer(WIDTH/5-32,HEIGHT/5-32,ID.testObjcet));
         Handler.addObj(new testObjcet(WIDTH/4-32,HEIGHT/4-32,ID.testObjcet));
-        test = new player(500,500,ID.testObjcet);
+        test = new player(100,500,ID.testObjcet);
         
         //Handler.addObj(new player(WIDTH/2-32, HEIGHT/2-32, ID.Player)); // fist object of linked list will have player controls attached 
         
@@ -111,7 +111,7 @@ public class game extends Canvas implements Runnable
    
     private void tick()
     {
-        test.animate(new vec2(100,100));
+        test.animate(new vec2(200,100));
         Handler.tick(); // tick game object
         keyInput.tick();
         test.tick();
@@ -122,7 +122,7 @@ public class game extends Canvas implements Runnable
         BufferStrategy bs = this.getBufferStrategy();
         if(bs == null)
         {
-            this.createBufferStrategy(3);
+            this.createBufferStrategy(2);
             return;
         }
 
@@ -137,6 +137,7 @@ public class game extends Canvas implements Runnable
          // render game object
         
         g.dispose();
+        
         
         bs.show();
     }

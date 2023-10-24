@@ -30,7 +30,7 @@ public class player extends gameObject
     //@Override
     public void render(Graphics g) 
     {   // this function declars what the player obj looks like 
-        g.setColor(Color.green);
+        g.setColor(Color.pink);
         g.fillRect(x, y, sizeX, sizeY);
         
     }
@@ -49,36 +49,45 @@ public class player extends gameObject
    
     }
     
-
+    @Override
     public void animate(vec2 newPos)
     {// snake player class will pass through a new x and y position (seprate from grid position)
      // which refers to the litral location on screen where the tile refrenced from grid location is 
      //this updates vel value so that this animate function need vel to update 
      // fix werid bug that causes var to skip value 
-     
+     int velocity = 2;
+
+
      if(this.getX() < newPos.x)
      {
-         this.setVelX(1);;
+         this.setVelX(velocity);;
          
      }
-     if(this.getX() > newPos.x)
+     else if(this.getX() > newPos.x)
      {
-         this.setVelY(-1);;
-         
-     }
-     if(this.getY() < newPos.y)
-     {
-         this.setVelX(1);;
-         
-     }
-     if(this.getY() > newPos.y)
-     {
-         this.setVelY(-1);;
+         this.setVelX(-(velocity));;
          
      }
      else{
+        
         this.setVelX(0);
-        this.setVelX(0);
+        setX(newPos.x);
+     }
+     if(this.getY() < newPos.y)
+     {
+         this.setVelY(velocity);
+         
+     }
+     else if(this.getY() > newPos.y)
+     {
+         this.setVelY(-(velocity));
+
+         
+     }
+     else{
+        
+        this.setVelY(0);
+        setY(newPos.y);
 
  }
     }

@@ -22,8 +22,9 @@ public class window extends Canvas
         frame.setResizable(false);
 
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
         frame.add(game);
+        frame.setVisible(true);
+        
         game.start();
 
     }
