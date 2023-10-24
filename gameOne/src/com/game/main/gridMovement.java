@@ -1,6 +1,6 @@
 package com.game.main;
 
-import com.sun.tools.javac.Main;
+
 
 public class gridMovement 
 {  
@@ -78,8 +78,10 @@ public class gridMovement
 
         
         //animate(player, targetPos.x, targetPos.y);
-       
+        vec2 testvecpos = new vec2(gridPosX, gridPosY);
+        player.setGridLocation(testvecpos);
         player.animate(targetPos);
+        System.out.println(player.getGridLocation());
 
         
         

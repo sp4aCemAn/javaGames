@@ -38,6 +38,8 @@ public class snakePlayer extends gameObject {
 
 
 
+
+
     public void render(Graphics g)
     {
         g.setColor(Color.pink);
@@ -96,13 +98,30 @@ public class snakePlayer extends gameObject {
     }
 
     @Override
-    public boolean isColiding(gameObject object) {
+    public boolean isColiding(gameObject object) 
+    {
         // TODO actually implement
-        return playerObjecList.get(0).isColiding(object);
+        return playerObjecList.get(0) != object && playerObjecList.get(0).isColiding(object);
         //throw new UnsupportedOperationException("Unimplemented method 'isColiding'");
     }
 
+    public void setGridLocation(vec2 newGridlocation)
+    {
+        playerObjecList.get(0).setGridLocation(newGridlocation);
+        for(int i = playerObjecList.size(); i>1 ;i--)
+        {
+            playerObjecList.get(i-1).setGridLocation(playerObjecList.get(i).getGridLocation());
+        }
+
+    }
 
 
+    public vec2 getGridLocation()
+    {
+        vec2 grid = playerObjecList.get(0).getGridLocation();
+        System.out.println(grid.x+" "+grid.y + "get grid loco");
+        return grid;
+    }
+ 
 
 }

@@ -21,6 +21,16 @@ public abstract class gameObject implements hitbox
 
     public abstract void tick();
 
+    public void setGridLocation(vec2 newGridLocation)
+    {
+        
+    }
+
+    public vec2 getGridLocation()
+    {
+        return new vec2(0, 0);
+    }
+
     public void animate(vec2 newPos)
     {// snake player class will pass through a new x and y position (seprate from grid position)
      // which refers to the litral location on screen where the tile refrenced from grid location is 
@@ -55,12 +65,13 @@ public abstract class gameObject implements hitbox
 
          
      }
-     else{
+     else
+     {
         
         this.setVelY(0);
         setY(newPos.y);
 
- }
+    }
     }
 
 
