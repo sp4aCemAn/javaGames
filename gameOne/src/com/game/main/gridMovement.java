@@ -20,46 +20,8 @@ public class gridMovement
     gridPosY = 0;
 
     }
-    // TODO fix race condition problem that causes target posiotion to be updated before player reaches said position 
-    public void animate(gameObject player,int newPosX,int newPosY)
-    {
-                
-
-        /*gridPosX += direction.x;  // store "vector" in X and Y values to ref for velX velY
-        gridPosY += direction.y;*/
-        
-       
-            if(player.getX() < targetPos.x)
-            {
-                player.setX(player.getX()+2);
-                
-            }
-            if(player.getX() > targetPos.x)
-            {
-                player.setX(player.getX()-2);
-                
-            }
-            if(player.getY() < targetPos.y)
-            {
-                player.setY(player.getY()+2);
-                
-            }
-            if(player.getY() > targetPos.y)
-            {
-                player.setY(player.getY()-2);
-                
-            }
-            else{
-        
-            
-
-        }
-        
-      
-        
-
-
-    }
+   
+    
     
 
 
