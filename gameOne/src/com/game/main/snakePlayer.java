@@ -11,6 +11,7 @@ public class snakePlayer extends gameObject {
  * where the snake head is the main node of the snake player 
  * 
  */
+    private vec2 lastGridlocation = new vec2(0, 0);
     public ArrayList<player> playerObjecList = new ArrayList<player>();
     public gameBoard gameBoard;
     public snakePlayer(int x, int y, ID id) 
@@ -50,8 +51,8 @@ public class snakePlayer extends gameObject {
             pos.x = player.getGridLocation().x *gameBoard.getUnitSize();
             pos.y = player.getGridLocation().y *gameBoard.getUnitSize();
             player.animate(pos);
-            System.out.println("test " + player.getGridLocation().x + " " + getGridLocation().y);
-            System.out.println("test 2 " + player.x + " " + player.y);
+            
+            //System.out.println("test 2 " + player.x + " " + player.y);
         }
         
 
@@ -150,18 +151,39 @@ public class snakePlayer extends gameObject {
 
 
     // figure out how to store last position
+    @Override
     public void setGridLocation(vec2 newGridlocation)
     {
     
-        
-        
-        
-        for(int i = playerObjecList.size()-1; i>0 ;i--)
+     
+
+        try {
+        if(!(playerObjecList.get(0).getGridLocation().equals(newGridlocation)))
         {
-            playerObjecList.get(i).setGridLocation(playerObjecList.get(i-1).getGridLocation());
+            
+            
+            System.out.println("updated grid location");
+
+
+            lastGridlocation = playerObjecList.get(0).getGridLocation();
+            
+            playerObjecList.get(0).setGridLocation(newGridlocation);
+            System.out.print(lastGridlocation);
+            playerObjecList.get(1).setGridLocation(lastGridlocation);
+            
+        
+        }
+        } catch (Exception e) {
+           System.out.println(e);
         }
         
-        playerObjecList.get(0).setGridLocation(newGridlocation);
+        
+
+           
+        
+        
+        
+        
         
 
     }

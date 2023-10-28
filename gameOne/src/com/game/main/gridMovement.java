@@ -41,13 +41,21 @@ public class gridMovement
         player.setSizeY(targetGrid[0][0].sizeY);
 
         // RETARDED !!!!!
-        if(!(player.getX() != targetPos.x))
-        targetGridPos.x += direction.x;
+        if((player.getX() == targetPos.x))
+        {
+            
+            targetGridPos.x += direction.x;
+            player.setGridLocation(targetGridPos);
+        }
         
         
-        if(!(player.getY() != targetPos.y))
-        targetGridPos.y += direction.y;
-
+        
+        if((player.getY() == targetPos.y))
+        {
+            
+            targetGridPos.y += direction.y;
+            player.setGridLocation(targetGridPos);
+        }
 
 
         // keep player in bounds
@@ -69,22 +77,22 @@ public class gridMovement
         }
 
         
-        System.out.println(targetGridPos.x + " " + targetGridPos.y); // debug
+       // System.out.println(targetGridPos.x + " " + targetGridPos.y); // debug
         targetPos.x = targetGrid[targetGridPos.y][targetGridPos.x].x; // store litral pos in vec2 to pass to animate function
         targetPos.y = targetGrid[targetGridPos.y][targetGridPos.x].y;
 
         
         //animate(player, targetPos.x, targetPos.y);
        
-        player.setGridLocation(targetGridPos); // set grid position for follow the leader stuff with snake player 
-        //player.animate(targetPos); // animate player to littral pos of tile 
-        System.out.println(player.getGridLocation());// debug 
+         // set grid position for follow the leader stuff with snake player 
+        
+        //System.out.println(player.getGridLocation());// debug 
 
         
         
         
         
-        System.out.println(targetGridPos.x +  " " + targetGridPos.y);// debug 
+        //System.out.println(targetGridPos.x +  " " + targetGridPos.y);// debug 
         
     } 
 
