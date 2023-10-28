@@ -77,7 +77,7 @@ public class gridMovement
         //animate(player, targetPos.x, targetPos.y);
        
         player.setGridLocation(targetGridPos); // set grid position for follow the leader stuff with snake player 
-        player.animate(targetPos); // animate player to littral pos of tile 
+        //player.animate(targetPos); // animate player to littral pos of tile 
         System.out.println(player.getGridLocation());// debug 
 
         

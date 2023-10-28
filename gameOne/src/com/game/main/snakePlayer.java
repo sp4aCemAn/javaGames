@@ -42,7 +42,7 @@ public class snakePlayer extends gameObject {
 
 
         vec2 pos = new vec2(0,0);
-        for (int i = 1; i< playerObjecList.size();i++) {
+        for (int i = 0; i< playerObjecList.size();i++) {
             player player = playerObjecList.get(i);
             
             
