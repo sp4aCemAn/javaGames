@@ -101,6 +101,12 @@ public class player extends gameObject
         gridLocation = targetGridLcoation;
     }
 
+
+    public vec2 getLocation()
+    {
+        return new vec2(getX(), getY()); // a fast way to get location in a vector 2 
+    }
+
   
 
     

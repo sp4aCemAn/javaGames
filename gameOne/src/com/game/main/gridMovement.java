@@ -8,17 +8,20 @@ public class gridMovement
     private float moveSpeed  = 1.0f;
     private vec2 direction = new vec2(0,0) ; // is going to work like vel x vel y but diffrent
     public Tile  targetGrid[][];  
-    //public int targetPos[] = new int[2];
-    public vec2 targetPos = new vec2(0,0);
-    public int gridPosX, gridPosY;
+    public vec2 targetPos = new vec2(6,6); // littral pixel position
+    public vec2 targetGridPos = new vec2(0,0); // grid position
+    
+   
             
 // constructor 
     public gridMovement(gameBoard board) 
     {
-    targetGrid = board.objectGrid;
-    gridPosX = 0;
-    gridPosY = 0;
+        targetGrid = board.objectGrid;
 
+        targetGridPos.x = 6;
+        targetGridPos.y = 6;
+    
+        
     }
    
     
@@ -32,62 +35,56 @@ public class gridMovement
     //TOOD rewrite to use dumb vec2 class
     public void movePlayer(gameObject player,vec2 direction)
     {
-       boolean inproc = false; 
+   
 
         player.setSizeX(targetGrid[0][0].sizeX); // update player size will be removed later 
         player.setSizeY(targetGrid[0][0].sizeY);
 
-        
-        if(!inproc){
-
-        }
-         
-        
         // RETARDED !!!!!
         if(!(player.getX() != targetPos.x))
-        gridPosX += direction.x;
+        targetGridPos.x += direction.x;
         
         
         if(!(player.getY() != targetPos.y))
-        gridPosY += direction.y;
+        targetGridPos.y += direction.y;
 
 
 
-
-        if(gridPosX < 0)
+        // keep player in bounds
+        if(targetGridPos.x < 0)
         {
-            gridPosX = 0;
+            targetGridPos.x = 0;
         }
-        if(gridPosY < 0)
+        if(targetGridPos.y < 0)
         {
-            gridPosY = 0;
+            targetGridPos.y = 0;
         }        
-        if(gridPosX>targetGrid.length-1)
+        if(targetGridPos.x>targetGrid.length-1)
         {
-            gridPosX = targetGrid.length-1;
+            targetGridPos.x = targetGrid.length-1;
         }
-        if(gridPosY>targetGrid[0].length-1)
+        if(targetGridPos.y>targetGrid[0].length-1)
         {
-            gridPosY = targetGrid[0].length-1;
+            targetGridPos.y = targetGrid[0].length-1;
         }
 
-
-        System.out.println(gridPosX + " " + gridPosY);
-        targetPos.x = targetGrid[gridPosY][gridPosX].x;
-        targetPos.y = targetGrid[gridPosY][gridPosX].y;
+        
+        System.out.println(targetGridPos.x + " " + targetGridPos.y); // debug
+        targetPos.x = targetGrid[targetGridPos.y][targetGridPos.x].x; // store litral pos in vec2 to pass to animate function
+        targetPos.y = targetGrid[targetGridPos.y][targetGridPos.x].y;
 
         
         //animate(player, targetPos.x, targetPos.y);
-        vec2 testvecpos = new vec2(gridPosX, gridPosY);
-        player.setGridLocation(testvecpos);
-        player.animate(targetPos);
-        System.out.println(player.getGridLocation());
+       
+        player.setGridLocation(targetGridPos); // set grid position for follow the leader stuff with snake player 
+        player.animate(targetPos); // animate player to littral pos of tile 
+        System.out.println(player.getGridLocation());// debug 
 
         
         
         
         
-        System.out.println(gridPosX +  " " + gridPosY);
+        System.out.println(targetGridPos.x +  " " + targetGridPos.y);// debug 
         
     } 
 

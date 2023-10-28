@@ -12,12 +12,18 @@ public class snakePlayer extends gameObject {
  * 
  */
     public ArrayList<player> playerObjecList = new ArrayList<player>();
-
+    public gameBoard gameBoard;
     public snakePlayer(int x, int y, ID id) 
     {
         super(x, y, id);
         player snakeHead = new player(x,y,id);
+        player testNode = new player(x-snakeHead.sizeX, y, id);
+        player testNode2 = new player(x-snakeHead.sizeX*2, y, id);
+        
         playerObjecList.add(0,snakeHead);
+        playerObjecList.add(1, testNode);
+        playerObjecList.get(1).setGridLocation(new vec2(playerObjecList.get(0).getGridLocation().x, playerObjecList.get(0).getGridLocation().y));
+     
         System.out.println(playerObjecList.get(0));
 
         
@@ -29,7 +35,24 @@ public class snakePlayer extends gameObject {
         //playerObjecList.get(0).setVelY(velY);
         //loop through all objects and update location based on prev head location 
         // maybe create a animate function inside of every player node?
-        playerObjecList.get(0).tick();
+        
+        for (player objecPlayer  : playerObjecList) {
+            objecPlayer.tick();
+        }
+
+
+        vec2 pos = new vec2(0,0);
+        for (int i = 1; i< playerObjecList.size();i++) {
+            player player = playerObjecList.get(i);
+            
+            
+
+            pos.x = player.getGridLocation().x *gameBoard.getUnitSize();
+            pos.y = player.getGridLocation().y *gameBoard.getUnitSize();
+            player.animate(pos);
+            System.out.println("test " + player.getGridLocation().x + " " + getGridLocation().y);
+            System.out.println("test 2 " + player.x + " " + player.y);
+        }
         
 
 
@@ -53,9 +76,21 @@ public class snakePlayer extends gameObject {
 
     public void animate(vec2 targetPos)
     {
+        
+        
         playerObjecList.get(0).animate(targetPos);
+
+
+   
+        
     }
     
+    public void setGameBoard(gameBoard GameBoard)
+    {
+        gameBoard = GameBoard;
+    }
+
+
     public void setX(int x)
     {
         playerObjecList.get(0).setX(x);
@@ -80,11 +115,19 @@ public class snakePlayer extends gameObject {
     public void setSizeX(int x)
     {
         playerObjecList.get(0).setSizeX(x);
+        for (player player : playerObjecList)
+        {
+            player.setSizeX(x);
+        }    
     }
     
     public void setSizeY(int y)
     {
         playerObjecList.get(0).setSizeY(y);
+        for (player player : playerObjecList) 
+        {
+            player.setSizeY(y);
+        }
     }
     
     public int getSizeX()
@@ -105,13 +148,21 @@ public class snakePlayer extends gameObject {
         //throw new UnsupportedOperationException("Unimplemented method 'isColiding'");
     }
 
+
+    // figure out how to store last position
     public void setGridLocation(vec2 newGridlocation)
     {
-        playerObjecList.get(0).setGridLocation(newGridlocation);
-        for(int i = playerObjecList.size(); i>1 ;i--)
+    
+        
+        
+        
+        for(int i = playerObjecList.size()-1; i>0 ;i--)
         {
-            playerObjecList.get(i-1).setGridLocation(playerObjecList.get(i).getGridLocation());
+            playerObjecList.get(i).setGridLocation(playerObjecList.get(i-1).getGridLocation());
         }
+        
+        playerObjecList.get(0).setGridLocation(newGridlocation);
+        
 
     }
 

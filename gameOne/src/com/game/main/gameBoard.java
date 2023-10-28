@@ -71,7 +71,10 @@ public class gameBoard
 
     }
 
-    
+    public int getUnitSize()
+    {
+        return UNIT_SIZE;
+    }
     
 
     // render Grid 

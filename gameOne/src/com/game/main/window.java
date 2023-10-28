@@ -23,9 +23,10 @@ public class window extends Canvas
 
         frame.setLocationRelativeTo(null);
         frame.add(game);
-        frame.setVisible(true);
         
+        frame.setVisible(true);
         game.start();
+        
 
     }
 }     
