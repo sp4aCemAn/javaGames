@@ -1,6 +1,6 @@
 package com.game.main;
 import java.awt.Graphics;
-import java.awt.Color;
+//import java.awt.Color;
 public abstract class gameObject implements hitbox
 {
     
@@ -20,7 +20,7 @@ public abstract class gameObject implements hitbox
     }
 
     public abstract void tick();
-
+    //TODO add get and set grid location
     public void setGridLocation(vec2 newGridLocation)
     {
         
@@ -35,51 +35,49 @@ public abstract class gameObject implements hitbox
     {// snake player class will pass through a new x and y position (seprate from grid position)
      // which refers to the litral location on screen where the tile refrenced from grid location is 
      //this updates vel value so that this animate function need vel to update 
-     // fix werid bug that causes var to skip value 
-     int velocity = 2;
+     // fix werid bug that causes var to skip value
+     //TODO figure out better way to implement this useing delta
+     //horible way to implement this 
+        int velocity = 2;
 
 
-     if(this.getX() < newPos.x)
-     {
-         this.setVelX(velocity);;
-         
-     }
-     else if(this.getX() > newPos.x)
-     {
-         this.setVelX(-(velocity));;
-         
-     }
-     else{
-        
-        this.setVelX(0);
-        setX(newPos.x);
-     }
-     if(this.getY() < newPos.y)
-     {
-         this.setVelY(velocity);
-         
-     }
-     else if(this.getY() > newPos.y)
-     {
-         this.setVelY(-(velocity));
-
-         
-     }
-     else
-     {
-        
-        this.setVelY(0);
-        setY(newPos.y);
-
-    }
+        if(this.getX() < newPos.x)
+        {
+             this.setVelX(velocity);;
+        }
+        else if(this.getX() > newPos.x)
+        {
+            this.setVelX(-(velocity));;
+        }
+        else{
+            this.setVelX(0);
+            setX(newPos.x);
+        }
+        if(this.getY() < newPos.y)
+        {
+            this.setVelY(velocity);
+        }
+        else if(this.getY() > newPos.y)
+        {
+             this.setVelY(-(velocity));
+        }
+        else
+        {
+            this.setVelY(0);
+            setY(newPos.y);
+        }
     }
 
-
-    public void render(Graphics g) {
-        // TODO Auto-generated method stub
+    // ovride deafault render
+    public void render(Graphics g) 
+    {
         throw new UnsupportedOperationException("Unimplemented method 'render'");
     }
 
+    public vec2 getPos()
+    {
+        return new vec2(x,y);
+    }
     
 
     public void setX(int x)

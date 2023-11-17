@@ -3,7 +3,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-public class snakePlayer extends gameObject {
+public class snakePlayer extends gameObject 
+{
 
 /*
  * store player as a list of player objects each player will
@@ -11,7 +12,7 @@ public class snakePlayer extends gameObject {
  * where the snake head is the main node of the snake player 
  * 
  */
-    private vec2 lastGridlocation = new vec2(0, 0);
+    private ArrayList<vec2> lastGridlocation = new ArrayList<vec2>();
     public ArrayList<player> playerObjecList = new ArrayList<player>();
     public gameBoard gameBoard;
     public snakePlayer(int x, int y, ID id) 
@@ -26,8 +27,6 @@ public class snakePlayer extends gameObject {
         playerObjecList.get(1).setGridLocation(new vec2(playerObjecList.get(0).getGridLocation().x, playerObjecList.get(0).getGridLocation().y));
      
         System.out.println(playerObjecList.get(0));
-
-        
     }
         
     public void tick()
@@ -37,25 +36,20 @@ public class snakePlayer extends gameObject {
         //loop through all objects and update location based on prev head location 
         // maybe create a animate function inside of every player node?
         
-        for (player objecPlayer  : playerObjecList) {
+        for (player objecPlayer  : playerObjecList) 
+        {
             objecPlayer.tick();
         }
 
 
         vec2 pos = new vec2(0,0);
-        for (int i = 0; i< playerObjecList.size();i++) {
+        for (int i = 0; i< playerObjecList.size();i++) 
+        {
             player player = playerObjecList.get(i);
-            
-            
-
-            pos.x = player.getGridLocation().x *gameBoard.getUnitSize();
-            pos.y = player.getGridLocation().y *gameBoard.getUnitSize();
+            pos.x = player.getGridLocation().x * gameBoard.getUnitSize();
+            pos.y = player.getGridLocation().y * gameBoard.getUnitSize();
             player.animate(pos);
-            
-            //System.out.println("test 2 " + player.x + " " + player.y);
         }
-        
-
 
     }
 
@@ -65,25 +59,18 @@ public class snakePlayer extends gameObject {
 
 
     public void render(Graphics g)
-    {
+    {    
         g.setColor(Color.pink);
         
         for(player i : playerObjecList)
         {
-
-            i.render(g);
+            i.render(g); 
         }
     }
 
     public void animate(vec2 targetPos)
-    {
-        
-        
+    {           
         playerObjecList.get(0).animate(targetPos);
-
-
-   
-        
     }
     
     public void setGameBoard(gameBoard GameBoard)
@@ -99,9 +86,7 @@ public class snakePlayer extends gameObject {
 
     public int getX()
     {
-        
         return playerObjecList.get(0).getX();
-
     }
     public void setY(int y)
     {
@@ -143,49 +128,28 @@ public class snakePlayer extends gameObject {
 
     @Override
     public boolean isColiding(gameObject object) 
-    {
-        // TODO actually implement
+    { 
         return playerObjecList.get(0) != object && playerObjecList.get(0).isColiding(object);
-        //throw new UnsupportedOperationException("Unimplemented method 'isColiding'");
     }
 
 
     // figure out how to store last position
-    @Override
+    //@Override
     public void setGridLocation(vec2 newGridlocation)
     {
-    
-     
-
-        try {
-        if(!(playerObjecList.get(0).getGridLocation().equals(newGridlocation)))
-        {
-            
-            
-            System.out.println("updated grid location");
-
-
-            lastGridlocation = playerObjecList.get(0).getGridLocation();
+        
+        if(playerObjecList.get(0).getGridLocation() != newGridlocation)
+        {// update all the objects in the list to the head object then update the head object 
+            System.out.println("test");
+            for(int i = playerObjecList.size()-1; i > 0; i--)
+            {
+                System.out.println(playerObjecList.get(i).gridLocation);
+                playerObjecList.get(i).setGridLocation(playerObjecList.get(i-1).getGridLocation());
+            }
             
             playerObjecList.get(0).setGridLocation(newGridlocation);
-            System.out.print(lastGridlocation);
-            playerObjecList.get(1).setGridLocation(lastGridlocation);
-            
-        
         }
-        } catch (Exception e) {
-           System.out.println(e);
-        }
-        
-        
-
-           
-        
-        
-        
-        
-        
-
+        //playerObjecList.get(0).setGridLocation(newGridlocation);    
     }
 
 

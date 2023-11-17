@@ -12,6 +12,14 @@ public class vec2
 
     }
 
+    public vec2 ()
+    {
+        
+        x = 0;
+        y = 0;
+
+    }
+
     public int getX()
     {
         return x;

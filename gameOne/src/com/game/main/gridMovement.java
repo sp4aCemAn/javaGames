@@ -6,7 +6,7 @@ public class gridMovement
 {  
    
     private float moveSpeed  = 1.0f;
-    private vec2 direction = new vec2(0,0) ; // is going to work like vel x vel y but diffrent
+    //private vec2 direction = new vec2(0,0) ; // is going to work like vel x vel y but diffrent
     public Tile  targetGrid[][];  
     public vec2 targetPos = new vec2(6,6); // littral pixel position
     public vec2 targetGridPos = new vec2(0,0); // grid position
@@ -43,18 +43,16 @@ public class gridMovement
         // RETARDED !!!!!
         if((player.getX() == targetPos.x))
         {
-            
-            targetGridPos.x += direction.x;
             player.setGridLocation(targetGridPos);
+            targetGridPos.x += direction.x;
         }
         
         
         
         if((player.getY() == targetPos.y))
         {
-            
-            targetGridPos.y += direction.y;
             player.setGridLocation(targetGridPos);
+            targetGridPos.y += direction.y;
         }
 
 
@@ -67,19 +65,20 @@ public class gridMovement
         {
             targetGridPos.y = 0;
         }        
-        if(targetGridPos.x>targetGrid.length-1)
+        if(targetGridPos.x > targetGrid.length-1)
         {
             targetGridPos.x = targetGrid.length-1;
         }
-        if(targetGridPos.y>targetGrid[0].length-1)
+        if(targetGridPos.y > targetGrid[0].length-1)
         {
             targetGridPos.y = targetGrid[0].length-1;
         }
 
         
        // System.out.println(targetGridPos.x + " " + targetGridPos.y); // debug
-        targetPos.x = targetGrid[targetGridPos.y][targetGridPos.x].x; // store litral pos in vec2 to pass to animate function
-        targetPos.y = targetGrid[targetGridPos.y][targetGridPos.x].y;
+        targetPos = targetGrid[targetGridPos.y][targetGridPos.x].getPos();
+        //targetPos.x = targetGrid[targetGridPos.y][targetGridPos.x].x; // store litral pos in vec2 to pass to animate function
+        //targetPos.y = targetGrid[targetGridPos.y][targetGridPos.x].y;
 
         
         //animate(player, targetPos.x, targetPos.y);
