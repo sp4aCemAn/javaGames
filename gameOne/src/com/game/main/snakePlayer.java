@@ -41,7 +41,7 @@ public class snakePlayer extends gameObject
             objecPlayer.tick();
         }
 
-
+        // optimization made to make getting grid location faster 
         vec2 pos = new vec2(0,0);
         for (int i = 0; i< playerObjecList.size();i++) 
         {
@@ -53,7 +53,31 @@ public class snakePlayer extends gameObject
 
     }
 
-
+    @Override
+    public void setGridLocation(vec2 newGridlocation)
+    {
+        System.out.println("called : setgrid");
+        if(playerObjecList.get(0).getGridLocation() != newGridlocation)
+        {// update all the objects in the list to the head object then update the head object 
+          
+            try 
+            {
+            System.out.println("test");
+            for(int i = playerObjecList.size()-1; i > 0; i--)
+            {
+                System.out.println(playerObjecList.get(i).gridLocation);
+                playerObjecList.get(i).setGridLocation(playerObjecList.get(i-1).getGridLocation());
+            }
+            System.out.println("test2");
+           } catch (Exception e) {
+            System.out.println(e);
+           }
+           
+        
+            playerObjecList.get(0).setGridLocation(newGridlocation);
+        }
+        //playerObjecList.get(0).setGridLocation(newGridlocation);    
+    }
 
 
 
@@ -134,25 +158,10 @@ public class snakePlayer extends gameObject
 
 
     // figure out how to store last position
-    //@Override
-    public void setGridLocation(vec2 newGridlocation)
-    {
-        
-        if(playerObjecList.get(0).getGridLocation() != newGridlocation)
-        {// update all the objects in the list to the head object then update the head object 
-            System.out.println("test");
-            for(int i = playerObjecList.size()-1; i > 0; i--)
-            {
-                System.out.println(playerObjecList.get(i).gridLocation);
-                playerObjecList.get(i).setGridLocation(playerObjecList.get(i-1).getGridLocation());
-            }
-            
-            playerObjecList.get(0).setGridLocation(newGridlocation);
-        }
-        //playerObjecList.get(0).setGridLocation(newGridlocation);    
-    }
+    //TODO fix 
 
 
+    @Override
     public vec2 getGridLocation()
     {
         vec2 grid = playerObjecList.get(0).getGridLocation();

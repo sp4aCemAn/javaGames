@@ -9,7 +9,7 @@ public abstract class gameObject implements hitbox
     protected int velX, velY;
     public int sizeX;
     public int sizeY;
- 
+    private vec2 gridLocation = new vec2(0,0);
     public gameObject(int x, int y, ID id)
     {
         
@@ -23,12 +23,12 @@ public abstract class gameObject implements hitbox
     //TODO add get and set grid location
     public void setGridLocation(vec2 newGridLocation)
     {
-        
+        gridLocation = newGridLocation;
     }
 
     public vec2 getGridLocation()
     {
-        return new vec2(0, 0);
+        return gridLocation;
     }
 
     public void animate(vec2 newPos)
@@ -43,11 +43,11 @@ public abstract class gameObject implements hitbox
 
         if(this.getX() < newPos.x)
         {
-             this.setVelX(velocity);;
+             this.setVelX(velocity);
         }
         else if(this.getX() > newPos.x)
         {
-            this.setVelX(-(velocity));;
+            this.setVelX(-(velocity));
         }
         else{
             this.setVelX(0);
