@@ -87,7 +87,9 @@ public class game extends Canvas implements Runnable
             lastTime = now; // keeps tick speed
             while(delta >= 1)
             {
+                animate(delta);
                 tick();
+                
                 delta --;
                 //System.out.println(delta);
             }
@@ -95,6 +97,7 @@ public class game extends Canvas implements Runnable
             if(running)
             {
                 render();
+                
             }
                 
             
@@ -142,6 +145,10 @@ public class game extends Canvas implements Runnable
         
         
         bs.show();
+    }
+
+    private void animate (double delta){
+        Handler.animate(delta);
     }
 
 

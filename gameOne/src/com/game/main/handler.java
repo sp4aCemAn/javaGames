@@ -56,6 +56,20 @@ public class handler
         }
     }
 
+    public void animate(double delta) 
+    {
+
+        for(gameObject gameObject : objects)
+        {
+            gameObject.animate(delta);
+        }
+
+
+    }
+
+
+
+
     public void addObj(gameObject object)
     {
         this.objects.add(object);

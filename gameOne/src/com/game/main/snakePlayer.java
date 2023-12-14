@@ -57,7 +57,7 @@ public class snakePlayer extends gameObject
     public void setGridLocation(vec2 newGridlocation)
     {
         System.out.println("called : setgrid");
-        if(playerObjecList.get(0).getGridLocation() != newGridlocation)
+        if(playerObjecList.get(0).getGridLocation() != newGridlocation) // BUG this condition is never true 
         {// update all the objects in the list to the head object then update the head object 
           
             try 

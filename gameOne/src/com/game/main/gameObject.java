@@ -7,8 +7,8 @@ public abstract class gameObject implements hitbox
     protected int  x, y;
     protected ID id;
     protected int velX, velY;
-    public int sizeX;
-    public int sizeY;
+    public int sizeX, sizeY;
+    public double Delta;
     private vec2 gridLocation = new vec2(0,0);
     public gameObject(int x, int y, ID id)
     {
@@ -30,7 +30,16 @@ public abstract class gameObject implements hitbox
     {
         return gridLocation;
     }
+    public void animate(double delta)
+    {// snake player class will pass through a new x and y position (seprate from grid position)
+        Delta = delta;
+        System.out.println(Delta);
+        int velocity = (int)(5 * Delta);
+        
+        System.out.println(velocity);
 
+        setX(getX() + velocity);
+    }
     public void animate(vec2 newPos)
     {// snake player class will pass through a new x and y position (seprate from grid position)
      // which refers to the litral location on screen where the tile refrenced from grid location is 
@@ -38,7 +47,13 @@ public abstract class gameObject implements hitbox
      // fix werid bug that causes var to skip value
      //TODO figure out better way to implement this useing delta
      //horible way to implement this 
-        int velocity = 2;
+        int velocity = (int)(200 * Delta);
+
+       // System.out.println(Delta);
+        System.out.println(velocity);
+
+
+
 
 
         if(this.getX() < newPos.x)
