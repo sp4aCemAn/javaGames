@@ -62,16 +62,19 @@ public class snakePlayer extends gameObject
           
             try 
             {
-            System.out.println("test");
-            for(int i = playerObjecList.size()-1; i > 0; i--)
+                System.out.println("test");
+                for(int i = playerObjecList.size()-1; i > 0; i--)
+                {
+                    System.out.println(playerObjecList.get(i).gridLocation);
+                    playerObjecList.get(i).setGridLocation(playerObjecList.get(i-1).getGridLocation());
+                }
+                
+                System.out.println("test2");
+                
+            }catch (Exception e) 
             {
-                System.out.println(playerObjecList.get(i).gridLocation);
-                playerObjecList.get(i).setGridLocation(playerObjecList.get(i-1).getGridLocation());
+                System.out.println(e);
             }
-            System.out.println("test2");
-           } catch (Exception e) {
-            System.out.println(e);
-           }
            
         
             playerObjecList.get(0).setGridLocation(newGridlocation);
