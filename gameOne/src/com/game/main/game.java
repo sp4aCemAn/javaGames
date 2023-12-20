@@ -90,7 +90,7 @@ public class game extends Canvas implements Runnable
                 animate(delta);
                 tick();
                 
-                delta --;
+                delta = 0;
                 //System.out.println(delta);
             }
 
@@ -106,7 +106,7 @@ public class game extends Canvas implements Runnable
             if(System.currentTimeMillis() - timer > 1000)
             {
                 timer += 1000;
-                //System.out.println("FPS " + frames);
+                System.out.println("FPS " + frames);
                 frames = 0;
             }
         
@@ -116,10 +116,11 @@ public class game extends Canvas implements Runnable
    
     private void tick()
     {
-        test.animate(new vec2(200,100));
+        
         Handler.tick(); // tick game object
         keyInput.tick();
         test.tick();
+        test.setLocation(new vec2(50,50));
     }
 
     private void render()

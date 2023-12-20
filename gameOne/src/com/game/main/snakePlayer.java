@@ -14,7 +14,7 @@ public class snakePlayer extends gameObject
  */
     private ArrayList<vec2> lastGridlocation = new ArrayList<vec2>();
     public ArrayList<player> playerObjecList = new ArrayList<player>();
-    public gameBoard gameBoard;
+    
     public snakePlayer(int x, int y, ID id) 
     {
         super(x, y, id);
@@ -43,12 +43,15 @@ public class snakePlayer extends gameObject
 
         // optimization made to make getting grid location faster 
         vec2 pos = new vec2(0,0);
+
         for (int i = 0; i< playerObjecList.size();i++) 
         {
             player player = playerObjecList.get(i);
             pos.x = player.getGridLocation().x * gameBoard.getUnitSize();
             pos.y = player.getGridLocation().y * gameBoard.getUnitSize();
-            player.animate(pos);
+
+            player.setLocation(pos);
+            System.out.println(pos.x + " " + pos.y  + " bug" );
         }
 
     }
@@ -57,28 +60,16 @@ public class snakePlayer extends gameObject
     public void setGridLocation(vec2 newGridlocation)
     {
         System.out.println("called : setgrid");
-        if(playerObjecList.get(0).getGridLocation() != newGridlocation) // BUG this condition is never true 
-        {// update all the objects in the list to the head object then update the head object 
-          
-            try 
-            {
-                System.out.println("test");
-                for(int i = playerObjecList.size()-1; i > 0; i--)
-                {
-                    System.out.println(playerObjecList.get(i).gridLocation);
-                    playerObjecList.get(i).setGridLocation(playerObjecList.get(i-1).getGridLocation());
-                }
-                
-                System.out.println("test2");
-                
-            }catch (Exception e) 
-            {
-                System.out.println(e);
-            }
+        playerObjecList.get(1).setGridLocation(playerObjecList.get(0).getGridLocation());
+
+        playerObjecList.get(0).setGridLocation(newGridlocation);
+
+        
            
         
-            playerObjecList.get(0).setGridLocation(newGridlocation);
-        }
+            
+
+        
         //playerObjecList.get(0).setGridLocation(newGridlocation);    
     }
 
@@ -95,15 +86,15 @@ public class snakePlayer extends gameObject
         }
     }
 
-    public void animate(vec2 targetPos)
+    public void animate(double delta)
     {           
-        playerObjecList.get(0).animate(targetPos);
+        for (player node : playerObjecList) {
+            node.animate(delta);
+        }
+        
     }
     
-    public void setGameBoard(gameBoard GameBoard)
-    {
-        gameBoard = GameBoard;
-    }
+    
 
 
     public void setX(int x)
@@ -168,6 +159,8 @@ public class snakePlayer extends gameObject
     public vec2 getGridLocation()
     {
         vec2 grid = playerObjecList.get(0).getGridLocation();
+
+
         System.out.println(grid.x+" "+grid.y + "get grid loco");
         return grid;
     }

@@ -36,27 +36,34 @@ public class gridMovement
     public void movePlayer(gameObject player,vec2 direction)
     {
    
-
+        
         player.setSizeX(targetGrid[0][0].sizeX); // update player size will be removed later 
         player.setSizeY(targetGrid[0][0].sizeY);
 
         // RETARDED !!!!!
-        if((player.getX() == targetPos.x))
-        {
+
+        player.setGridLocation(targetGridPos);
+       System.out.println(player.getX() +  " player x " + " " + (player.getX() == (int)targetPos.x) + " " + player.getX() + " == " + targetPos.x );
+        if((player.getX() == (int)targetPos.x))
+        {   
+            System.out.println("called update x");
             player.setGridLocation(targetGridPos);
             targetGridPos.x += direction.x;
         }
         
+        System.out.println(targetGridPos.x + " " + targetGridPos.y);
         
         
-        if((player.getY() == targetPos.y))
+        if((player.getY() == (int)targetPos.y))
         {
+            System.out.println("called update y");
             player.setGridLocation(targetGridPos);
             targetGridPos.y += direction.y;
         }
 
 
         // keep player in bounds
+        
         if(targetGridPos.x < 0)
         {
             targetGridPos.x = 0;
@@ -73,6 +80,9 @@ public class gridMovement
         {
             targetGridPos.y = targetGrid[0].length-1;
         }
+         
+         
+       
 
         
        // System.out.println(targetGridPos.x + " " + targetGridPos.y); // debug

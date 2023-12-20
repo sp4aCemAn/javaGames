@@ -10,7 +10,7 @@ public class gameBoard
     
     //private ArrayList<gameObject> objectList = new ArrayList<gameObject>();
     protected int HIGHT,WIDTH;
-    private int UNIT_SIZE; 
+    public int UNIT_SIZE; 
     private int UNIT_PER_ROW; // tiles per row
     public Color COLOR_ONE, COLOR_TWO;
     public Tile objectGrid[][];

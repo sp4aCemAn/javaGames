@@ -3,7 +3,7 @@ package com.game.main;
 public class vec2 
 {
     public int x,y;
-
+    
     public vec2 (int X, int Y)
     {
         
@@ -28,8 +28,6 @@ public class vec2
     {
         return y;
     }
-
-    
     public void setX(int X)
     {
         x = X;
@@ -39,4 +37,7 @@ public class vec2
     {
         y = Y;
     }
+
+
+    
 }

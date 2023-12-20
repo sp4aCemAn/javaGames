@@ -52,20 +52,10 @@ public class player extends gameObject
     
     
 
-    @Override
-    public vec2 getGridLocation(){
-        return gridLocation;
-    }
-    @Override
-    public void setGridLocation(vec2 targetGridLcoation){
-        gridLocation = targetGridLcoation;
-    }
+    
 
 
-    public vec2 getLocation()
-    {
-        return new vec2(getX(), getY()); // a fast way to get location in a vector 2 
-    }
+    
 
   
 

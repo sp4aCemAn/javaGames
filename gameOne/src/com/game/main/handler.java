@@ -23,7 +23,7 @@ public class handler
         // loop through all game objects
 
         //test
-        
+        playerObject.getGridLocation();
 
         for (gameObject gameObj : objects)
         {
