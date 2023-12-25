@@ -68,22 +68,7 @@ public class snakePlayer extends gameObject
         }
 
         // optimization made to make getting grid location faster 
-        vec2 pos = new vec2(0,0);
-
-        for (int i = 0; i< playerObjectList.size();i++) 
-        {
-            player playerlocal = playerObjectList.get(i);
-            
-
-            pos.setX(playerlocal.getGridLocation().x * gameBoard.getUnitSize()); 
-            pos.setY(playerlocal.getGridLocation().y * gameBoard.getUnitSize());
-            
-            //pos.y = player.getGridLocation().y * gameBoard.getUnitSize();
-
-            playerlocal.setLocation(pos);
-            System.out.println(pos.x + " " + pos.y  +  playerObjectList.get(i));
-        }
-
+        
     }
 
     @Override
@@ -107,8 +92,6 @@ public class snakePlayer extends gameObject
     }
 
 
-
-
     public void render(Graphics g)
     {    
         g.setColor(Color.pink);
@@ -121,8 +104,16 @@ public class snakePlayer extends gameObject
 
     public void animate(double delta)
     {    
-               
-        for (player node : playerObjectList) {
+        
+        for (player node : playerObjectList) 
+        {
+            vec2 pos = new vec2(0,0);
+
+            pos.setX(node.getGridLocation().x * gameBoard.getUnitSize()); 
+            pos.setY(node.getGridLocation().y * gameBoard.getUnitSize());
+
+            node.setLocation(pos);
+            System.out.println(pos.x + " " + pos.y  +  node);
             node.animate(delta);
         }
         
