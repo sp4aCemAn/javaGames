@@ -74,13 +74,37 @@ public class snakePlayer extends gameObject
     @Override
     public void setGridLocation(vec2 newGridlocation)
     {
-        System.out.println("called : setgrid");
+    //System.out.println("called : setgrid");
+
+        
+
+            playerObjectList.get(0).setGridLocation(newGridlocation);
+        
+            for(int i = playerObjectList.size()-1; i > 0 ;i--)
+            {   
+                
+                //System.out.println("called : setgrid" + playerObjectList.get(i) + " new grid location " + playerObjectList.get(i-1).getGridLocation().x + " " + playerObjectList.get(i-1).getGridLocation().y );
+                if((playerObjectList.get(i).getGridLocation().getX() == (playerObjectList.get(i-1).getGridLocation().getX()+1)) || 
+                   (playerObjectList.get(i).getGridLocation().getX() == (playerObjectList.get(i-1).getGridLocation().getX()-1)) || 
+                   (playerObjectList.get(i).getGridLocation().getY() == (playerObjectList.get(i-1).getGridLocation().getY()+1)) ||
+                   (playerObjectList.get(i).getGridLocation().getY() == (playerObjectList.get(i-1).getGridLocation().getY()-1)) )
+                {
+                    System.out.println("called : setgrid" + playerObjectList.get(i) + " new grid location " + playerObjectList.get(i-1).getGridLocation().x + " " + playerObjectList.get(i-1).getGridLocation().y );
+                    //playerObjectList.get(i).setGridLocation(playerObjectList.get(i-1).getGridLocation());
+                }
+                    
+                
+            
+            }
+        
+        
+        
+       // playerObjectList.get(0).setGridLocation(newGridlocation);
 
         
         
-        
 
-        playerObjectList.get(0).setGridLocation(newGridlocation);
+        //playerObjectList.get(0).setGridLocation(newGridlocation);
 
         
            
