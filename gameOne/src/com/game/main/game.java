@@ -32,7 +32,7 @@ public class game extends Canvas implements Runnable
         Handler = new handler(); //initate handler class
         keyInput = new keyImput(Handler,Grid);
         this.addKeyListener(keyInput);
-        snakePlayer player = new snakePlayer(WIDTH/5-32,HEIGHT/5-32,ID.Player);
+        snakePlayer player = new snakePlayer(6*32,6*32,ID.Player);
         player.setGameBoard(Grid);
         Handler.addObj(player);
         Handler.addObj(new testObjcet(WIDTH/4-32,HEIGHT/4-32,ID.testObjcet));

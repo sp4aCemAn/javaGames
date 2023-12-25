@@ -42,25 +42,28 @@ public class gridMovement
 
         // RETARDED !!!!!
 
-        player.setGridLocation(targetGridPos);
-       System.out.println(player.getX() +  " player x " + " " + (player.getX() == (int)targetPos.x) + " " + player.getX() + " == " + targetPos.x );
-        if((player.getX() == (int)targetPos.x))
+
+        
+        
+        
+        
+        
+        
+        
+        //System.out.println(player.getX() +  " player x " + " " + (player.getX() == (int)targetPos.x) + " " + player.getX() + " == " + targetPos.x );
+        System.out.println((player.getX() == (int)targetPos.x) && (player.getY() == (int)targetPos.y));
+        
+        if((player.getX() == (int)targetPos.x) && (player.getY() == (int)targetPos.y))
         {   
-            System.out.println("called update x");
+            System.out.println("UPDATED GRID POSITION");
             player.setGridLocation(targetGridPos);
+
+            //player.setGridLocation(targetGridPos);
             targetGridPos.x += direction.x;
-        }
-        
-        System.out.println(targetGridPos.x + " " + targetGridPos.y);
-        
-        
-        if((player.getY() == (int)targetPos.y))
-        {
-            System.out.println("called update y");
-            player.setGridLocation(targetGridPos);
             targetGridPos.y += direction.y;
         }
-
+        
+        
 
         // keep player in bounds
         

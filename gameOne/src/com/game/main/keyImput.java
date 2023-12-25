@@ -45,7 +45,7 @@ public class keyImput extends KeyAdapter {
             try 
             { // dumb fix for now while i test hitbox
             // TODO Fix this ASAP
-            
+                   
                 switch (key)
                 {
                     case 38: // down arrow

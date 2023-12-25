@@ -13,30 +13,56 @@ public class snakePlayer extends gameObject
  * 
  */
     private ArrayList<vec2> lastGridlocation = new ArrayList<vec2>();
-    public ArrayList<player> playerObjecList = new ArrayList<player>();
+    public ArrayList<player> playerObjectList = new ArrayList<player>();
     
     public snakePlayer(int x, int y, ID id) 
     {
         super(x, y, id);
         player snakeHead = new player(x,y,id);
-        player testNode = new player(x-snakeHead.sizeX, y, id);
-        player testNode2 = new player(x-snakeHead.sizeX*2, y, id);
+        player Node = new player(x-snakeHead.sizeX, y, id);
+        player Node2 = new player(x-snakeHead.sizeX, y, id);
+        snakeHead.setGridLocation(new vec2(6,6));
+        playerObjectList.add(0,snakeHead);
+        playerObjectList.add(1,Node);
+        playerObjectList.add(2,Node2);
+
+        snakeHead.setGridLocation(new vec2(6,6));
+        snakeHead.setLocation(new vec2(6*32, 6*32));
+
+
+
+         for (int i = 1; i < playerObjectList.size(); i++)
+         {
+            playerObjectList.get(i).setGridLocation(new vec2 ((snakeHead.getGridLocation().x) - i,snakeHead.getGridLocation().y));
+            int tempx = playerObjectList.get(i).getGridLocation().x;
+            int tempy = playerObjectList.get(i).getGridLocation().y;
+
+            playerObjectList.get(i).setLocation(new vec2(tempx*32, tempy*32));
         
-        playerObjecList.add(0,snakeHead);
-        playerObjecList.add(1, testNode);
-        playerObjecList.get(1).setGridLocation(new vec2(playerObjecList.get(0).getGridLocation().x, playerObjecList.get(0).getGridLocation().y));
+
+    
+        }
+        
+        
+        
+        
+
+
+
+        //playerObjectList.add(1, testNode);
+        //playerObjectList.get(1).setGridLocation(new vec2(playerObjectList.get(0).getGridLocation().x, playerObjectList.get(0).getGridLocation().y));
      
-        System.out.println(playerObjecList.get(0));
+        System.out.println(playerObjectList.get(0));
     }
         
     public void tick()
     {
-        //playerObjecList.get(0).setVelX(velX);
-        //playerObjecList.get(0).setVelY(velY);
+        //playerObjectList.get(0).setVelX(velX);
+        //playerObjectList.get(0).setVelY(velY);
         //loop through all objects and update location based on prev head location 
         // maybe create a animate function inside of every player node?
         
-        for (player objecPlayer  : playerObjecList) 
+        for (player objecPlayer  : playerObjectList) 
         {
             objecPlayer.tick();
         }
@@ -44,14 +70,18 @@ public class snakePlayer extends gameObject
         // optimization made to make getting grid location faster 
         vec2 pos = new vec2(0,0);
 
-        for (int i = 0; i< playerObjecList.size();i++) 
+        for (int i = 0; i< playerObjectList.size();i++) 
         {
-            player player = playerObjecList.get(i);
-            pos.x = player.getGridLocation().x * gameBoard.getUnitSize();
-            pos.y = player.getGridLocation().y * gameBoard.getUnitSize();
+            player playerlocal = playerObjectList.get(i);
+            
 
-            player.setLocation(pos);
-            System.out.println(pos.x + " " + pos.y  + " bug" );
+            pos.setX(playerlocal.getGridLocation().x * gameBoard.getUnitSize()); 
+            pos.setY(playerlocal.getGridLocation().y * gameBoard.getUnitSize());
+            
+            //pos.y = player.getGridLocation().y * gameBoard.getUnitSize();
+
+            playerlocal.setLocation(pos);
+            System.out.println(pos.x + " " + pos.y  +  playerObjectList.get(i));
         }
 
     }
@@ -60,9 +90,12 @@ public class snakePlayer extends gameObject
     public void setGridLocation(vec2 newGridlocation)
     {
         System.out.println("called : setgrid");
-        playerObjecList.get(1).setGridLocation(playerObjecList.get(0).getGridLocation());
 
-        playerObjecList.get(0).setGridLocation(newGridlocation);
+        
+        
+        
+
+        playerObjectList.get(0).setGridLocation(newGridlocation);
 
         
            
@@ -70,7 +103,7 @@ public class snakePlayer extends gameObject
             
 
         
-        //playerObjecList.get(0).setGridLocation(newGridlocation);    
+        //playerObjectList.get(0).setGridLocation(newGridlocation);    
     }
 
 
@@ -80,15 +113,16 @@ public class snakePlayer extends gameObject
     {    
         g.setColor(Color.pink);
         
-        for(player i : playerObjecList)
+        for(player i : playerObjectList)
         {
             i.render(g); 
         }
     }
 
     public void animate(double delta)
-    {           
-        for (player node : playerObjecList) {
+    {    
+               
+        for (player node : playerObjectList) {
             node.animate(delta);
         }
         
@@ -99,27 +133,27 @@ public class snakePlayer extends gameObject
 
     public void setX(int x)
     {
-        playerObjecList.get(0).setX(x);
+        playerObjectList.get(0).setX(x);
     }
 
     public int getX()
     {
-        return playerObjecList.get(0).getX();
+        return playerObjectList.get(0).getX();
     }
     public void setY(int y)
     {
-        playerObjecList.get(0).setY(y);
+        playerObjectList.get(0).setY(y);
     }
 
     public int getY()
     {
-        return playerObjecList.get(0).getY();
+        return playerObjectList.get(0).getY();
     }
 
     public void setSizeX(int x)
     {
-        playerObjecList.get(0).setSizeX(x);
-        for (player player : playerObjecList)
+        playerObjectList.get(0).setSizeX(x);
+        for (player player : playerObjectList)
         {
             player.setSizeX(x);
         }    
@@ -127,8 +161,8 @@ public class snakePlayer extends gameObject
     
     public void setSizeY(int y)
     {
-        playerObjecList.get(0).setSizeY(y);
-        for (player player : playerObjecList) 
+        playerObjectList.get(0).setSizeY(y);
+        for (player player : playerObjectList) 
         {
             player.setSizeY(y);
         }
@@ -136,18 +170,18 @@ public class snakePlayer extends gameObject
     
     public int getSizeX()
     {
-        return playerObjecList.get(0).getSizeX();
+        return playerObjectList.get(0).getSizeX();
     }
     
     public int getSizeY()
     {
-        return playerObjecList.get(0).getSizeY();
+        return playerObjectList.get(0).getSizeY();
     }
 
     @Override
     public boolean isColiding(gameObject object) 
     { 
-        return playerObjecList.get(0) != object && playerObjecList.get(0).isColiding(object);
+        return playerObjectList.get(0) != object && playerObjectList.get(0).isColiding(object);
     }
 
 
@@ -158,7 +192,7 @@ public class snakePlayer extends gameObject
     @Override
     public vec2 getGridLocation()
     {
-        vec2 grid = playerObjecList.get(0).getGridLocation();
+        vec2 grid = playerObjectList.get(0).getGridLocation();
 
 
         System.out.println(grid.x+" "+grid.y + "get grid loco");

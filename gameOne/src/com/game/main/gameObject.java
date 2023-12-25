@@ -39,16 +39,17 @@ public abstract class gameObject implements hitbox
         
         
         Delta = delta;
-        System.out.println(Delta);
+        System.out.println(this + " " + this.id + " is going to " +  Location.x +  " " + Location.y);
         int velocity = (int)(3 * Delta);
         
         
 
 
-        System.out.println(velocity);
-        System.out.println(Location.x + " " + Location.y + " " +  this.getID());
-        
-    
+        //System.out.println(velocity);
+        //System.out.println(Location.x + " " + Location.y + " " +  this.getID());
+        try 
+        {
+                
             if(Location.x < x)
             setX(getX() - velocity);
 
@@ -66,6 +67,14 @@ public abstract class gameObject implements hitbox
                 setX(Location.x);
                 setY(Location.y);
             }
+        else{
+            System.out.println("at location");
+        }
+        } catch (Exception e) 
+        {
+            System.out.print(e + " OOF");
+        }
+
         
         
     }
