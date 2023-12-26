@@ -117,7 +117,7 @@ public class snakePlayer extends gameObject
 
 
     public void render(Graphics g)
-    {    
+    {
         g.setColor(Color.pink);
         
         for(player i : playerObjectList)
