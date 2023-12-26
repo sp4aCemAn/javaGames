@@ -12,7 +12,7 @@ public abstract class gameObject implements hitbox
     public vec2 gridLocation = new vec2(0,0), Location;
     public gameObject(int x, int y, ID id)
     {
-        
+        //test
         this.x = x;
         this.y = y;
         this.id = id;
