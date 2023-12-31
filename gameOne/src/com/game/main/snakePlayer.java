@@ -14,7 +14,7 @@ public class snakePlayer extends gameObject
  */
     private ArrayList<vec2> lastGridlocation = new ArrayList<vec2>();
     public ArrayList<player> playerObjectList = new ArrayList<player>();
-    
+    // test
     public snakePlayer(int x, int y, ID id) 
     {
         super(x, y, id);
